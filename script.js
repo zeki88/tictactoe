@@ -22,8 +22,8 @@ function Gameboard() {
 }
 
 function GameController(
-  playerOne = "Player X",
-  playerTwo = "Player O"
+  playerOne,
+  playerTwo
 ) {
   const board = Gameboard();
   const cell = board.getBoard();
@@ -143,7 +143,7 @@ function ScreenController() {
   const playerOne = document.querySelector('.playerOneName');
   const playerTwo = document.querySelector('.playerTwoName');
   const formNames = document.querySelector('.names');
-
+  const fillNames = document.querySelector('.complete')
   let winner = false;
   
   const updateScreen = () => {
@@ -152,8 +152,6 @@ function ScreenController() {
     const checkWinner = game.checkWinner();
     const board = game.getBoard();
     const activePlayer = game.getActivePlayer();
-    
-    
     playerTurnDiv.textContent = `${activePlayer.name}'s turn...`  
     winnerDiv.textContent = `${checkWinner} is the winner`
     tieDiv.textContent = "It's a tie";
@@ -205,9 +203,15 @@ function ScreenController() {
     e.preventDefault();
     game.players[0].name = playerOne.value;
     game.players[1].name = playerTwo.value;
-    boardDiv.style.display = 'grid'
-    playerTurnDiv.style.display = 'block'
+    if (game.players[0].name == false || game.players[1].name == false) {
+      fillNames.style.display = 'block';
+      return false
+    }
+    boardDiv.style.display = 'grid';
+    playerTurnDiv.style.display = 'block';
+    reset.style.display = 'block';
     formNames.style.display = 'none';
+    fillNames.style.display = 'none';
     formNames.reset();
     updateScreen();
   }

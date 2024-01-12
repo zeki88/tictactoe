@@ -1,0 +1,36 @@
+.board {
+    display: none;
+    height: 300px;
+    width: 300px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    border: 1px solid black;
+    gap: 2px;
+    padding: 2px;
+    background-color: rgb(251, 0, 255);
+  }
+  
+  .cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 2rem;
+    border: 1px solid grey;
+    background: lightyellow;
+    cursor: pointer;
+  }
+
+  .winner {
+    display: none;
+  }
+
+  .turn {
+    display: none;
+  }
+
+  .tie {
+    display: none;
+  }
+
+  

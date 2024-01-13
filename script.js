@@ -156,16 +156,16 @@ function ScreenController() {
     winnerDiv.textContent = `${checkWinner} is the winner`
     tieDiv.textContent = "It's a tie";
 
-        for (let i = 0; i < 3; i++) {
-          for (let j = 0; j < 3; j++) {
-            const cellButton = document.createElement("button");
-            cellButton.classList.add("cell");
-            cellButton.dataset.row = i;
-            cellButton.dataset.column = j;
-            cellButton.textContent = board[i][j];
-            boardDiv.appendChild(cellButton);
-          }
-        }
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        const cellButton = document.createElement("button");
+        cellButton.classList.add("cell");
+        cellButton.dataset.row = i;
+        cellButton.dataset.column = j;
+        cellButton.textContent = board[i][j];
+        boardDiv.appendChild(cellButton);
+      }
+    }
 
         if (checkWinner != " " && checkWinner != 'tie') {
           winner = true;
@@ -186,7 +186,8 @@ function ScreenController() {
     if (game.getBoard()[selectedRow][selectedColumn] != " ") return;
     if (winner == true)  return;
     game.playRound(selectedRow, selectedColumn);
-
+    e.target.classList.add("animated")
+    console.log (e.target)
     updateScreen();
   }
 
